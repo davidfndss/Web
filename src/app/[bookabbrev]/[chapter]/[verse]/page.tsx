@@ -1,6 +1,7 @@
 "use client";
 
 import nvi from "@/app/bible/nvi.json";
+import DynamicHeader from "@/app/components/Header/DynamicHeader";
 import { useParams, useRouter } from "next/navigation";
 import { BiChevronLeft, BiGlobe, BiGlobeAlt, BiWorld } from "react-icons/bi";
 import { IoGlobeOutline } from "react-icons/io5";
@@ -16,10 +17,13 @@ export default function ReadPage() {
 
   const book = bible.find((book) => book.abbrev === bookabbrev);
   const verses = chapter !== undefined ? book?.chapters[chapter - 1] : [];
+  const chapterIndex = nvi.findIndex(
+    (book) => book.abbrev === bookabbrev
+  );
 
   return (
     <main className="flex w-full max-w-[400px] border border-zinc-800 min-h-screen flex-col items-start mx-auto pt-4 pb-14 overflow-hidden">
-      <div
+      {/* <div
         className={`absolute max-w-[400px] bottom-[400px] flex flex-col ${
           (chapter == 1 && "bottom-[450px]") || "bottom-[680px]"
         }`}
@@ -48,7 +52,9 @@ export default function ReadPage() {
             chapter == 1 && "text-transparent"
           }`}
         ></i>
-      </header>
+      </header> */}
+
+      <DynamicHeader bookIndex={chapterIndex} bookName={book.name} chapter={chapter} />
 
       <h1 className={`text-3xl px-4 mt-8 ${chapter == 1 && "mt-[280px]"}`}>
         {book?.name} {chapter}
