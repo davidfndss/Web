@@ -1,6 +1,7 @@
 import { Poltawski_Nowy } from 'next/font/google';
 import { Metadata } from 'next';
 import "./globals.css";
+import "bootstrap-icons/font/bootstrap-icons.css"
 
 const poltawskiNowy = Poltawski_Nowy({
   subsets: ['latin'],

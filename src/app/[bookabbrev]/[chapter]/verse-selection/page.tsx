@@ -14,7 +14,7 @@ export default function VerseSelectionPage() {
       <h1 className="font-bold text-4xl">Selecionar Versículo</h1>
 
       <div className="grid grid-cols-4 w-full text-xl gap-3 mt-4">
-        {bible.find(book => book.abbrev === bookabbrev).chapters.map((verse, index) => (
+        {(bible.find(book => book.abbrev === bookabbrev)?.chapters ?? []).map((verse, index) => (
           <button
             className="border grid-span-1 py-2 border-zinc-800 cursor-pointer"
             key={index}
